@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="PG-Occ: Progressive Gaussian Transformer with Anisotropy-aware Sampling for Open Vocabulary Occupancy Prediction">
+  <meta name="keywords" content="3D Gaussian Splatting, 3D Occupancy Prediction, Open-vocabulary">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>PG-Occ</title>
+  <link rel="icon" type="image/x-icon" href="static/images/laptop.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title"><span class="gradient-text">PG-Occ</span><br>
+              <span class="subtitle-line">Progressive Gaussian Transformer with Anisotropy-aware Sampling for Open Vocabulary Occupancy Prediction</span>
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://yanchi-3dv.github.io" target="_blank">Chi Yan</a><sup>1,2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.danxurgb.net/" target="_blank">Dan Xu</a><sup>1,*</sup>
+              </span>
+              <br>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block"><sup>1</sup>The Hong Kong University of Science and Technology<br>
+                  <span class="author-block"><sup>2</sup>ZEEKR Automobile R&D Co., Ltd
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding author</small></span>
+              </div>
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <!-- PDF link -->
+                  <span class="link-block">
+                    <a href="" target="_blank" class="external-link button is-normal is-rounded is-dark"
+                      style="color: #fff;">
+                      <span class="icon" style="color: #fff;">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span style="color: #fff;">Paper</span>
+                    </a>
+                  </span>
+
+                  <!-- Github link -->
+                  <span class="link-block">
+                    <a href="https://github.com/yanchi-3dv/PG-Occ" target="_blank"
+                      class="external-link button is-normal is-rounded" style="background-color: #24292e; color: #fff;">
+                      <span class="icon" style="color: #fff;">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span style="color: #fff;">Code</span>
+                    </a>
+                  </span>
+
+                  <!-- ArXiv abstract Link -->
+                  <span class="link-block">
+                    <a href="" target="_blank" class="external-link button is-normal is-rounded"
+                      style="background-color: #24292e; color: #fff;">
+                      <span class="icon" style="color: #fff;">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span style="color: #fff;">arXiv</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+  </section>
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <div id="results-carousel" class="carousel results-carousel preview-carousel">
+          <div class="item seq 010">
+            <span class="preview-video-wrapper">
+              <p class="video-caption">Scene #0345</p>
+              <video poster="static/images/thumbs/demo1-0345.jpg" data-src="videos/demo1-0345.mp4" data-autoplay="true"
+                     data-loop="true" preload="metadata" id="scene-demo1-0345" controls muted playsinline height="100%">
+                <source type="video/mp4">
+              </video>
+            </span>
+          </div>
+          <div class="item seq 020">
+            <span class="preview-video-wrapper">
+              <p class="video-caption">Scene #0099</p>
+              <video poster="static/images/thumbs/demo2-0099.jpg" data-src="videos/demo2-0099.mp4" data-autoplay="true"
+                     data-loop="true" preload="metadata" id="scene-demo2-0099" controls muted playsinline height="100%">
+                <source type="video/mp4">
+              </video>
+            </span>
+          </div>
+          <div class="item seq 150">
+            <span class="preview-video-wrapper">
+              <p class="video-caption">Scene #0565</p>
+              <video poster="static/images/thumbs/demo3-0565.jpg" data-src="videos/demo3-0565.mp4" data-autoplay="true"
+                     data-loop="true" preload="metadata" id="scene-demo3-0565" controls muted playsinline height="100%">
+                <source type="video/mp4">
+              </video>
+            </span>
+          </div>
+          <div class="item seq 150">
+            <span class="preview-video-wrapper">
+              <p class="video-caption">Scene #0107</p>
+              <video poster="static/images/thumbs/demo4-0107.jpg" data-src="videos/demo4-0107.mp4" data-autoplay="true"
+                     data-loop="true" preload="metadata" id="scene-demo4-0107" controls muted playsinline height="100%">
+                <source type="video/mp4">
+              </video>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              The 3D occupancy prediction task has witnessed remarkable progress in recent years, playing a crucial role
+              in vision-based autonomous driving systems. While traditional methods are limited to fixed semantic
+              categories, recent approaches have moved towards predicting text-aligned features to enable
+              open-vocabulary text queries in real-world scenes. However, there exists a trade-off in text-aligned scene
+              modeling: sparse Gaussian representation struggles to capture small objects in the scene, while dense
+              representation incurs significant computational overhead. To address these limitations, we present
+              <b>PG-Occ</b>, an innovative <b>P</b>rogressive <b>G</b>aussian Transformer framework that enables
+              open-vocabulary 3D occupancy prediction. Our framework employs progressive online densification, a
+              feed-forward strategy that gradually enhances the 3D Gaussian representation to capture fine-grained scene
+              details. By iteratively enhancing the representation, the framework achieves increasingly precise and
+              detailed scene understanding. Another key contribution is the introduction of an anisotropy-aware sampling
+              strategy with spatio-temporal fusion, which adaptively assigns receptive fields to Gaussians at different
+              scales and stages, enabling more effective feature aggregation and richer scene information capture.
+              Through extensive evaluations, we demonstrate that <b>PG-Occ</b> achieves <i>state-of-the-art</i>
+              performance with a relative <b>14.3% mIoU improvement</b> over the previous best performing method.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Overview</h2>
+      <div class="content has-text-justified">
+        The radar chart compares occupancy prediction accuracy across multiple methods, showing the superior performance
+        of PG-Occ. The central panel highlights the key components: progressive Gaussian modeling with online
+        feed-forward densification, anisotropy-aware sampling with adaptive receptive fields, and open-vocabulary
+        retrieval conditioned on prompt inputs. The bottom row illustrates an example progression from the current input
+        view through successive densification stages to the final occupancy prediction.
+      </div>
+      <img src="static/images/overview.png" alt="Overview illustration">
+    </div>
+  </section>
+
+  <section class="section is-light">
+    <div class="demo-block white">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Framework</h2>
+      <div class="content has-text-justified">
+        Architecture of the proposed PG-Occ framework. The scene is represented as feature Gaussian blobs, starting from
+        a base layer and progressively refined and densified through multiple stages. Multi-camera inputs are processed
+        to extract spatio-temporal features, which guide the update and refinement of the Gaussians, producing an
+        any-resolution 3D occupancy field for both geometric reconstruction and open-vocabulary semantic understanding.
+      </div>
+        <img src="static/images/pipeline.png" alt="Framework illustration">
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-light">
+    <div class="container is-max-desktop">
+      <div class="demo-block white">
+      <h2 class="title is-3 has-text-centered">More demo videos</h2>
+      </div>
+      </div>
+
+  <div class="demo-block white">
+    <div class="video-container vertical-stack">
+      <div class="bal-container-small">
+        <div class="carousel results-carousel is-hide-pagination" id="third-person-carousel">
+          <div class="item">
+            <video poster="static/images/thumbs/0099-3rd.jpg" data-src="videos/0099-3rd.mp4" data-loop="true" data-autoplay="true"
+                   preload="metadata" id="scene-0099-3rd" controls muted playsinline height="100%">
+              <source type="video/mp4">
+            </video>
+            <p class="video-caption has-text-centered">Scene #0099</p>
+          </div>
+          <div class="item">
+            <video poster="static/images/thumbs/0770-3rd.jpg" data-src="videos/0770-3rd.mp4" data-loop="true" data-autoplay="true"
+                   preload="metadata" id="scene-0770" controls muted playsinline height="100%">
+              <source type="video/mp4">
+            </video>
+            <p class="video-caption has-text-centered">Scene #0770</p>
+          </div>
+          <div class="item">
+            <video poster="static/images/thumbs/0557-3rd.jpg" data-src="videos/0557-3rd.mp4" data-loop="true" data-autoplay="true"
+                   preload="metadata" id="scene-0557" controls muted playsinline height="100%">
+              <source type="video/mp4">
+            </video>
+            <p class="video-caption has-text-centered">Scene #0557</p>
+          </div>
+        </div>
+        <div class="scene-selector has-text-centered" style="margin-top: 0.75rem;">
+          <div class="buttons is-centered is-small" data-carousel-select="third-person-carousel">
+            <button type="button" class="button is-light is-small" data-slide="0">Scene #0099</button>
+            <button type="button" class="button is-light is-small" data-slide="1">Scene #0770</button>
+            <button type="button" class="button is-light is-small" data-slide="2">Scene #0557</button>
+          </div>
+        </div>
+        <h2 class="subtitle has-text-centered is-size-3-mobile" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+          📷 Third-person Perspective Demos.
+        </h2>
+        <p class="demo-description has-text-centered" style="margin-top: 0.25rem; margin-bottom: 0.5rem; color: #888;">
+          We showcase third-person view comparisons between PG-Occ predictions and Ground Truth for scenes #0099, #0770, and #0557.
+        </p>
+      </div>
+    </div>
+  </div>
+  <br>
+  
+  <div class="demo-block white">
+    <div class="video-container vertical-stack">
+      <div class="bal-container-small">
+        <div class="carousel results-carousel is-hide-pagination" id="comparison-carousel">
+          <div class="item">
+            <video poster="static/images/thumbs/0103-com-f.jpg" data-src="videos/0103-com-f.mp4" data-loop="true" data-autoplay="true"
+                   preload="metadata" id="scene-0103-front" controls muted playsinline height="100%">
+              <source type="video/mp4">
+            </video>
+            <p class="video-caption has-text-centered">Scene #0103 Front View</p>
+          </div>
+          <div class="item">
+            <video poster="static/images/thumbs/0103-com-b.jpg" data-src="videos/0103-com-b.mp4" data-loop="true" data-autoplay="true"
+                   preload="metadata" id="scene-0103-back" controls muted playsinline height="100%">
+              <source type="video/mp4">
+            </video>
+            <p class="video-caption has-text-centered">Scene #0103 Back View</p>
+          </div>
+        </div>
+        <div class="scene-selector has-text-centered" style="margin-top: 0.75rem;">
+          <div class="buttons is-centered is-small" data-carousel-select="comparison-carousel">
+            <button type="button" class="button is-light is-small" data-slide="0">Scene #0103 Front</button>
+            <button type="button" class="button is-light is-small" data-slide="1">Scene #0103 Back</button>
+          </div>
+        </div>
+        <h2 class="subtitle has-text-centered is-size-3-mobile" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+          🏆 Comparison with Previous state-of-the-art Methods.
+        </h2>
+        <p class="demo-description has-text-centered" style="margin-top: 0.25rem; margin-bottom: 0.5rem; color: #888;">
+          We provide a baseline comparison for scene #0103 among GaussTR, our method (PG-Occ), and Ground Truth. The
+          video demonstrates the qualitative differences between these approaches, highlighting the improvements
+          achieved by PG-Occ over previous state-of-the-art methods.  </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="demo-block white">
+    <div class="video-container vertical-stack">
+      <div class="bal-container-small">
+        <div class="has-text-centered">
+          <p class="video-caption has-text-centered">#Scene 0103</p>
+          <video poster="" id="scene-compare" autoplay controls muted loop playsinline height="100%">
+            <source src="scene-0103-f.mp4" type="video/mp4">
+          </video>
+        </div>
+        <h2 class="subtitle has-text-centered is-size-3-mobile" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+          🏆 Comparison with Previous state-of-the-art Methods.
+        </h2>
+        <p class="demo-description has-text-centered" style="margin-top: 0.25rem; margin-bottom: 0.5rem; color: #888;">
+          We provide a baseline comparison for scene 0103 among GaussTR, our method (PG-Occ), and Ground Truth. The
+          video demonstrates the qualitative differences between these approaches, highlighting the improvements
+          achieved by PG-Occ over previous state-of-the-art methods.
+        </p>
+      </div>
+    </div>
+  </div>
+  </section> -->
+
+  <section class="section is-light">
+    <div class="container is-max-desktop">
+      <div class="demo-block white">
+      <h2 class="title is-3 has-text-centered">Results on Occ3D-nuScenes dataset</h2>
+      <div class="content has-text-justified">
+        We report open-vocabulary occupancy prediction results on the Occ3D-nuScenes dataset, grouping methods based on
+        the sensor modalities used during training. LangOcc, GaussTR, and PG-Occ all use MaskCLIP (Zhou et al., 2022)
+        for text supervision. PG-Occ achieves state-of-the-art performance with an mIoU of <b>15.15</b>, a 14.3%
+        relative improvement over previous best methods. Notably, even without LiDAR data during training, PG-Occ
+        outperforms VEON and other competitors.
+      </div>
+      <img src="static/images/miou_result.png" alt="Results table">
+    </div>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>
+@article{yan2025pgocc,
+  title={Progressive Gaussian Transformer with Anisotropy-aware Sampling for Open Vocabulary Occupancy Prediction},
+  author={Yan, Chi and Xu, Dan},
+  journal={arXiv preprint arXiv:2510.xxxxx},
+  year={2025}
+}
+    </code></pre>
+    </div>
+  </section>
+</body>
+</html>
+
+<footer class="footer" style="padding: 0.5rem 0;">
+  <div class="container" style="padding-top: 0; padding-bottom: 0;">
+    <div class="columns is-centered" style="margin-top: 0; margin-bottom: 0;">
+      <div class="column is-8" style="padding-top: 0.25rem; padding-bottom: 0.25rem;">
+        <div class="content" style="margin: 0;">
+          <p style="margin-bottom: 0.25rem; font-size: 0.9em;">
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

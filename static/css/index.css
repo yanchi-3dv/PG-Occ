@@ -1,0 +1,313 @@
+.results-carousel .item > video::-webkit-media-controls {/* safari specific */}
+
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+@import "https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.24/dist/css/bulma-carousel.min.css";
+
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+
+.footer .icon-link {
+    font-size: 25px;
+    color: #000;
+}
+
+.link-block a {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.dnerf {
+  font-variant: small-caps;
+}
+
+.bal-container-small {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  cursor: grab;
+  overflow: visible;
+  border-radius: 12px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.bal-container-big {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  cursor: grab;
+  overflow: hidden;
+}
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+
+.publication-title {
+  line-height: 1.15;
+}
+
+.publication-title .gradient-text {
+  font-size: 1.18em;
+}
+
+.publication-title .subtitle-line {
+  display: inline-block;
+  font-size: 0.75em;
+  font-weight: 500;
+  color: #3d4251;
+}
+
+.publication-banner {
+  max-height: parent;
+
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #ffb74d, #4caf50, #2196f3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.publication-banner video {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  object-fit: fit;
+}
+
+.publication-header .hero-body {
+}
+
+.publication-title {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-venue {
+    color: #555;
+    width: fit-content;
+    font-weight: bold;
+}
+
+.publication-awards {
+    color: #ff3860;
+    width: fit-content;
+    font-weight: bolder;
+}
+
+.publication-authors {
+}
+
+.publication-authors a {
+   color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+    text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.publication-banner img {
+}
+
+.publication-authors {
+  /*color: #4286f4;*/
+}
+
+.publication-video {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+
+    overflow: hidden;
+    border-radius: 10px !important;
+}
+
+.publication-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.publication-body img {
+}
+
+
+
+/* .results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  padding: 20px;
+  font-size: 0;
+}
+
+.results-carousel video {
+  margin: 0;
+} */
+
+.results-carousel {
+  overflow: hidden;
+}
+
+
+.preview-carousel {
+  overflow: hidden;
+}
+
+.preview-carousel .item {
+  margin: 5px !important;
+  overflow: hidden !important;
+  border: 1px solid #bbb !important;
+  border-radius: 10px !important;
+  padding: 0 !important;
+  font-size: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.preview-carousel .preview-video-wrapper {
+  position: relative;
+  display: block;
+}
+
+.preview-carousel .preview-video-wrapper video {
+  display: block !important;
+  width: 100% !important;
+  height: auto;
+  margin: 0 !important;
+}
+
+.preview-carousel .preview-video-wrapper .video-caption {
+  position: absolute;
+  top: 0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 0.35rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(70, 90, 130, 0.2);
+  background: rgba(255, 255, 255, 0.92);
+  color: #2c2f3a;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 18px -12px rgba(36, 52, 94, 0.45);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  text-align: center;
+}
+
+
+.video-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.video-item {
+  flex: 1 0 200px;
+  margin: 10px;
+}
+
+.slider-pagination .slider-page {
+  background: #000000;
+}
+
+.eql-cntrb {
+  font-size: smaller;
+}
+
+.scene-info-box {
+  background-color: #f7f8fb;
+  border: 1px solid #d7dce5;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 0.75rem 1rem 1.5rem;
+  font-size: 0.95rem;
+  text-align: left;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.scene-info-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #2a2a2a;
+}
+
+.scene-info-text {
+  margin: 0;
+  color: #5a5f6b;
+  line-height: 1.5;
+}
+
+.scene-info-box--centered {
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.results-carousel .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.results-carousel .item > video {
+  align-self: stretch;
+  order: 2;
+}
+
+.results-carousel.is-hide-pagination .slider-pagination {
+  display: none !important;
+}
+
+.video-caption {
+  order: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 1.1rem;
+  margin: 0.8rem auto 0.35rem;
+  border: 1px solid rgba(70, 90, 130, 0.25);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #2c2f3a;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 18px -10px rgba(36, 52, 94, 0.45);
+  backdrop-filter: blur(6px);
+}
+
+.scene-selector .buttons {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+.scene-selector .button.is-small {
+  min-width: 7rem;
+  justify-content: center;
+}
