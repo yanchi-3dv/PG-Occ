@@ -8,6 +8,10 @@ body {
 }
 
 
+.hero .container.is-max-desktop {
+  max-width: 1200px;
+}
+
 .footer .icon-link {
     font-size: 25px;
     color: #000;
@@ -56,12 +60,12 @@ body {
 }
 
 .publication-title .gradient-text {
-  font-size: 1.18em;
+  font-size: 1.32em;
 }
 
 .publication-title .subtitle-line {
   display: inline-block;
-  font-size: 0.75em;
+  font-size: 0.88em;
   font-weight: 500;
   color: #3d4251;
 }
