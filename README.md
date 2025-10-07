@@ -9,7 +9,7 @@
 [Chi Yan](https://yanchi-3dv.github.io)<sup>1,2</sup>, [Dan Xu](https://www.danxurgb.net/)<sup>1</sup><br>
 <sup>1</sup>The Hong Kong University of Science and Technology, <sup>2</sup>ZEEKR
 
-<!-- <a href='https://arxiv.org/abs/2510.10712'><img src='https://img.shields.io/badge/ArXiv-2510.10712-red'></a> &nbsp;  -->
+<a href='https://arxiv.org/abs/2510.04759'><img src='https://img.shields.io/badge/ArXiv-2510.04759-red'></a> &nbsp; 
 <a href='https://yanchi-3dv.github.io/PG-Occ/'><img src='https://img.shields.io/badge/Project-Page-Green'></a>  &nbsp;
 </div>
 
@@ -38,7 +38,7 @@ If you find PG-Occ helpful to your research, please cite our paper:
 @article{yan2025pgocc,
   title={Progressive Gaussian Transformer with Anisotropy-aware Sampling for Open Vocabulary Occupancy Prediction},
   author={Yan, Chi and Xu, Dan},
-  journal={arXiv preprint arXiv:2510.xxxxx},
+  journal={arXiv preprint arXiv:2510.04759},
   year={2025}
 }
 ```
