@@ -21,7 +21,9 @@ Demo videos are available at the [project page](https://yanchi-3dv.github.io/PG-
 We are organizing the code and applying to the company, please be patient
 - [x] Release project page
 - [x] Release checkpoint
-- [x] Release training code
+- [x] Release training & evaluation code
+- [ ] Release visualization code
+
 
 ## 🔆 Abstract
 
