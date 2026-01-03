@@ -1,0 +1,58 @@
+# PyTorch (CUDA 12.1)
+torch==2.1.0 --index-url https://download.pytorch.org/whl/cu121
+torchvision==0.16.0 --index-url https://download.pytorch.org/whl/cu121
+torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu121
+
+# Core dependencies
+openmim
+setuptools==59.5.0
+numpy==1.23.5
+
+# MMDetection ecosystem (install via mim)
+# mim install mmcv-full==1.6.0
+# mim install mmdet==2.28.2
+# mim install mmsegmentation==0.30.0
+# mim install mmdet3d==1.0.0rc6
+
+# 3D processing and Gaussian splatting
+pyquaternion
+plyfile
+gsplat
+trimesh
+open3d
+
+# Visualization and logging
+matplotlib
+tensorboard
+plotly
+
+# Dataset and NuScenes
+nuscenes-devkit
+
+# Scientific computing
+scipy
+scikit-learn
+scikit-image
+
+# Image processing
+opencv-python
+Pillow
+imageio
+
+# Utilities
+tqdm
+pyyaml
+yacs
+omegaconf
+
+# Build dependencies
+pybind11
+ninja
+
+# Development tools
+ipdb
+pytest
+
+# Optional for faster data loading
+# pyturbojpeg  # Requires: sudo apt-get install -y libturbojpeg
+# pillow-simd==9.0.0.post1  # Uninstall pillow first: pip uninstall pillow
