@@ -6,8 +6,9 @@
 
 <img src='./assets/title.png'></img>
 
-[Chi Yan](https://yanchi-3dv.github.io)<sup>1,2</sup>, [Dan Xu](https://www.danxurgb.net/)<sup>1</sup><br>
-<sup>1</sup>The Hong Kong University of Science and Technology, <sup>2</sup>ZEEKR
+[Chi Yan](https://yanchi-3dv.github.io)<sup>1,2</sup>, [Dan Xu](https://www.danxurgb.net/)<sup>1</sup>  
+<sup>1</sup>The Hong Kong University of Science and Technology, <sup>2</sup>ZEEKR  
+**ICLR 2026**
 
 <a href='https://arxiv.org/abs/2510.04759'><img src='https://img.shields.io/badge/ArXiv-2510.04759-red'></a> &nbsp; 
 <a href='https://yanchi-3dv.github.io/PG-Occ/'><img src='https://img.shields.io/badge/Project-Page-Green'></a>  &nbsp;
