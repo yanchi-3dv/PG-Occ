@@ -353,27 +353,43 @@ class SparseGaussiansDecoder(BaseModule):
 
             gau_pred = self.gau_pred_heads[i](query_feat_part)
 
+            q0 = self.num_queries[0]
+            q1 = self.num_queries[1]
+            q2 = self.num_queries[2]
+
             if i == 0:
                 gaussian = self.query_2_gaussian(gau_pred, range=[0.0, 6.4])
                 query_coord = gaussian['delta_xyz'] + query_coord
 
             elif i == 1:
-                gaussian = self.query_2_gaussian(gau_pred[:self.num_queries[0]], range=[0.0, 6.4])
-                query_coord[:self.num_queries[0]] = gaussian['delta_xyz'] + query_coord[:self.num_queries[0]]
+                gaussian = self.query_2_gaussian(gau_pred[:, :q0], range=[0.0, 6.4])
+                query_coord[:, :q0] = gaussian['delta_xyz'] + query_coord[:, :q0]
 
-                gaussian_medium = self.query_2_gaussian(gau_pred[self.num_queries[0]:self.num_queries[0]+self.num_queries[1]], range=[0.0, 6.4])
-                query_coord[self.num_queries[0]:self.num_queries[0]+self.num_queries[1]] = gaussian_medium['delta_xyz'] / 2 + query_coord[self.num_queries[0]:self.num_queries[0]+self.num_queries[1]]
+                gaussian_medium = self.query_2_gaussian(gau_pred[:, q0:q0+q1], range=[0.0, 6.4])
+                query_coord[:, q0:q0+q1] = gaussian_medium['delta_xyz'] / 2 + query_coord[:, q0:q0+q1]
 
             elif i == 2:
-                gaussian = self.query_2_gaussian(gau_pred[:self.num_queries[0]], range=[0.0, 6.4])
-                query_coord[:self.num_queries[0]] = gaussian['delta_xyz'] + query_coord[:self.num_queries[0]]
+                gaussian = self.query_2_gaussian(gau_pred[:, :q0], range=[0.0, 6.4])
+                query_coord[:, :q0] = gaussian['delta_xyz'] + query_coord[:, :q0]
 
-                gaussian_medium = self.query_2_gaussian(gau_pred[self.num_queries[0]:self.num_queries[0]+self.num_queries[1]], range=[0.0, 6.4])
-                query_coord[self.num_queries[0]:self.num_queries[0]+self.num_queries[1]] = gaussian_medium['delta_xyz'] / 2 + query_coord[self.num_queries[0]:self.num_queries[0]+self.num_queries[1]]
+                gaussian_medium = self.query_2_gaussian(gau_pred[:, q0:q0+q1], range=[0.0, 6.4])
+                query_coord[:, q0:q0+q1] = gaussian_medium['delta_xyz'] / 2 + query_coord[:, q0:q0+q1]
 
-                gaussian_fine = self.query_2_gaussian(gau_pred[self.num_queries[0]+self.num_queries[1]:self.num_queries[0]+self.num_queries[1]+self.num_queries[2]], range=[0.0, 6.4])
-                query_coord[self.num_queries[0]+self.num_queries[1]:self.num_queries[0]+self.num_queries[1]+self.num_queries[2]] = gaussian_fine['delta_xyz'] / 4 + query_coord[self.num_queries[0]+self.num_queries[1]:self.num_queries[0]+self.num_queries[1]+self.num_queries[2]]
-            
+                gaussian_fine = self.query_2_gaussian(gau_pred[:, q0+q1:q0+q1+q2], range=[0.0, 6.4])
+                query_coord[:, q0+q1:q0+q1+q2] = gaussian_fine['delta_xyz'] / 4 + query_coord[:, q0+q1:q0+q1+q2]
+
+            all_scales = [gaussian['gau_scales']]
+            all_rots = [gaussian['gau_rots']]
+            all_opacities = [gaussian['gau_opacities']]
+            if i >= 1:
+                all_scales.append(gaussian_medium['gau_scales'])
+                all_rots.append(gaussian_medium['gau_rots'])
+                all_opacities.append(gaussian_medium['gau_opacities'])
+            if i >= 2:
+                all_scales.append(gaussian_fine['gau_scales'])
+                all_rots.append(gaussian_fine['gau_rots'])
+                all_opacities.append(gaussian_fine['gau_opacities'])
+
             if self.render_conf['use_ov']:
                 ov_query_feat = query_feat_part
                 for ov_layer in self.ov_heads[i]:
@@ -382,11 +398,11 @@ class SparseGaussiansDecoder(BaseModule):
                 ov_query_feat = None
 
             pred_gaussians = GaussianPrediction(
-                means=query_coord,                   # [B, N, 3]
-                scales=gaussian['gau_scales'],       # [B, N, 1]
-                rotations=gaussian['gau_rots'],      # [B, N, 4]
-                opacities=gaussian['gau_opacities'], # [B, N, 1]
-                ovs=ov_query_feat,                          # [B, N, 512]
+                means=query_coord,
+                scales=torch.cat(all_scales, dim=1),
+                rotations=torch.cat(all_rots, dim=1),
+                opacities=torch.cat(all_opacities, dim=1),
+                ovs=ov_query_feat,
                 colors=None,
             )
 
